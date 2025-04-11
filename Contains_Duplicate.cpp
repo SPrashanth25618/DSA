@@ -16,3 +16,22 @@ class Solution
 };
 // T.C = O(N^2)
 // S.C = O(1)
+
+
+//optimal
+class Solution 
+{
+    public:
+        bool containsDuplicate(vector<int>& nums) 
+        {
+            unordered_set<int> st;
+            for(int &i:nums){
+                if(st.count(i))
+                    return true;
+                st.insert(i);
+            }
+            return false;
+        }
+};
+// T.C = O(N)
+// S.C = O(N)
