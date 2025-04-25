@@ -59,12 +59,35 @@ class Solution
 public:
     vector<int> findDisappearedNumbers(vector<int> &nums)
     {
-        unordered_set<int> s(nums.begin(),nums.end());
+        unordered_set<int> s(nums.begin(), nums.end());
         vector<int> ans;
-        int n=nums.size();
-        for(int i=1;i<=n;i++)
-            if(!s.count(i))
+        int n = nums.size();
+        for (int i = 1; i <= n; i++)
+            if (!s.count(i))
                 ans.push_back(i);
+        return ans;
+    }
+};
+
+class Solution
+{
+public:
+    vector<int> findDisappearedNumbers(vector<int> &nums)
+    {
+        int n= nums.size();
+        for(int i=0;i<n;i++)
+        {
+            while(nums[nums[i]-1]!=nums[i])
+            {
+                swap(nums[nums[i]-1],nums[i]);
+            }
+        }
+        vector<int> ans;
+        for(int i=0;i<n;i++)
+        {
+            if(nums[i]!=i+1)
+                ans.push_back(i+1);
+        }
         return ans;
     }
 };
